@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "5aa4af84-70e7-4d5b-980e-be8891d01762",
+		"name": "Currency Exchange Rate API Monitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46792576",
+		"_collection_link": "https://dennisdean-4464121.postman.co/workspace/Dennis-Dean's-Workspace~09c14191-4015-4656-8c56-d95a892452b1/collection/46792576-5aa4af84-70e7-4d5b-980e-be8891d01762?action=share&source=collection_link&creator=46792576"
+	},
+	"item": [
+		{
+			"name": "https://open.er-api.com/v6/latest/USD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Ensure the API call works and response is successful\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"// Parse the JSON response body into a JavaScript object\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// Undefined property example - this will fail as 'conversion_rates' is not an object in the API response it is 'rates'\r",
+							"//pm.test(\"Response contains EUR rate\", function() {\r",
+							"    //pm.expect(jsonData.conversion_rates).to.have.property(\"EUR\");\r",
+							"//});\r",
+							"\r",
+							"// Ensure 'rates' object exists before further checks (this is a defensive test to check if this object exist to avoid undefined property error like in the previous comments)\r",
+							"pm.test(\"rates object exists\", function () {\r",
+							"    pm.expect(jsonData.rates, \"rates field should exist\").to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"// Check if essential currencies are all present\r",
+							"pm.test(\"Essential currencies exist (EUR, GBP, JPY)\", function () {\r",
+							"    // Using a const variable so this variable is not reassigned to another value; just add to the array if needed\r",
+							"    const requiredCurrencies = [\"EUR\", \"GBP\", \"JPY\"];\r",
+							"    \r",
+							"    requiredCurrencies.forEach(function(currency) {\r",
+							"        pm.expect(jsonData.rates, \"Missing currency: \" + currency)\r",
+							"            .to.have.property(currency);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://open.er-api.com/v6/latest/USD",
+					"protocol": "https",
+					"host": [
+						"open",
+						"er-api",
+						"com"
+					],
+					"path": [
+						"v6",
+						"latest",
+						"USD"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
