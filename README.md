@@ -45,7 +45,7 @@ As a beginner in APIs and integrations, this project simulates real-world API su
 
 ## 📂 Project Files
 
-- `/Currency_API_Monitor.postman_collection.json`  
+- `/Currency_Exchange_Rate_API_Monitor.postman_collection.json`  
   Postman Collection file for API testing and monitoring.
 
 - `/README.md`  
