@@ -20,7 +20,7 @@ As a beginner in APIs and integrations, this project simulates real-world API su
   `GET`
 
 - **Response Example:**  
-  Rates for currencies like EUR, GBP, JPY, CNY, and many others.
+  Rates for currencies like EUR, GBP, JPY, and many others.
 
 - **API Provider:**  
   [ExchangeRate-API](https://www.exchangerate-api.com/)
