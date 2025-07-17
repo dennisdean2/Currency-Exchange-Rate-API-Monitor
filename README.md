@@ -29,7 +29,7 @@ As a beginner in APIs and integrations, this project simulates real-world API su
 
 ## 🛠️ Monitoring Setup (Postman)
 
-- **Tool:** [Postman Monitors](https://learning.postman.com/docs/monitors/intro-monitors/)
+- **Tool:** [Postman Monitors](https://learning.postman.com/docs/monitoring-your-api/setting-up-monitor/)
 - **What It Does:**
   - Automatically calls the API at scheduled intervals.
   - Checks that key currencies exist (`EUR`, `GBP`, `JPY`).
